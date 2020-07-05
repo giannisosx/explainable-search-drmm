@@ -33,6 +33,9 @@ folds[3] = [306,307,313,321,324,326,334,347,351,354,358,361,362,363,376,380,382,
 folds[4] = [320,325,330,332,335,337,342,344,350,355,368,377,379,387,393,398,402,405,407,408,412,420,421,425,430,431,435,438,616,618,625,630,633,636,639,649,650,653,655,657,659,667,668,672,673,676,682,686,691,697]
 folds[5] = [304,305,310,311,314,315,318,329,333,339,340,345,346,353,359,366,367,372,375,384,385,388,389,391,395,399,400,401,409,416,418,429,441,442,443,609,610,613,615,621,629,634,640,645,658,660,681,694,696,699]
 
+
+folds[4].remove(672)
+
 fold = int(sys.argv[1])
 
 
@@ -91,7 +94,7 @@ train_pack = mz.data_pack.DataPack(relation=train_rels, left=train_queries, righ
 
 train_pack.right.set_index('id_right',inplace=True)
 
-preprocessor = mz.preprocessors.BasicPreprocessor(fixed_length_left=10, fixed_length_right=500, remove_stop_words=False)
+preprocessor = mz.preprocessors.BasicPreprocessor(fixed_length_left=10, fixed_length_right=100, remove_stop_words=False)
 print("train preprocessing...")
 train_pack_processed = preprocessor.fit_transform(train_pack)
 print("dev preprocessing...")
